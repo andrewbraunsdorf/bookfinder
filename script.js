@@ -15,7 +15,8 @@ function search(){
 	 }).then(function(data){
 	 		const parser = new DOMParser();
 	 		const parsedRes = parser.parseFromString(data, "text/xml");
-	 		console.log(parsedRes);
+	 		const parseJson = xmlToJson(parsedRes);
+	 		console.log(parseJson);
 	 });
 	 //Display results on page as a list (<li></li>)
 }
