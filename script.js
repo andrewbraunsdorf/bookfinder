@@ -15,12 +15,30 @@ function search(){
 	 }).then(function(data){
 	 		const parser = new DOMParser();
 	 		const parsedRes = parser.parseFromString(data, "text/xml");
-	 		const parseJson = xmlToJson(parsedRes);
-	 		console.log(parseJson);
+	 		const parsedJson = xmlToJson(parsedRes);
+	 		console.log(parsedJson);
+	 		
+	 		//callback function because only if the mother function does something
+	 		displayResults(parsedJson)
 	 });
-	 //Display results on page as a list (<li></li>)
+	 ////Display results on page as a list (<li></li>)
+	 ////document.getElementById("results").innerHTML = "<li> item1 </li><li> item2 </li>"
+	 //const myList = document.createElement("li");
+	 ////can now call it like an html element this is why you can call li.innerHTML
+	 //myList.innerHTML = "item 1";
+	 //document.getElementById("results").appendChild(myList);
 }
 
+//display results on page as a list
+function displayResults(responseObj) {
+	console.log("calling inside displayResults", responseObj);
+	//get properties inside an object use . notation
+	const works = responseObj.GoodreadsResponse.search.results.work;
+	
+	works.forEach(function(work){
+		console.log(work);
+	})
+}
 // Changes XML to JSON
 // https://davidwalsh.name/convert-xml-json
 function xmlToJson(xml) {
