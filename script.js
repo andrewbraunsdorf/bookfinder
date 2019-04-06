@@ -31,13 +31,19 @@ function search(){
 
 //display results on page as a list
 function displayResults(responseObj) {
-	console.log("calling inside displayResults", responseObj);
+	// console.log("calling inside displayResults", responseObj);
 	//get properties inside an object use . notation
 	const works = responseObj.GoodreadsResponse.search.results.work;
 	
 	works.forEach(function(work){
-		console.log(work);
-	})
+		// console.log(work);
+		const author = work.best_book.author.name["#text"];
+		const title = work.best_book.title["#text"];
+		const imgUrl = work.best_book.image_url["#text"];
+		console.log("title:", title + ", Author:", author + ", Bookcover", imgUrl);
+		
+		// console.log(author);
+	});
 }
 // Changes XML to JSON
 // https://davidwalsh.name/convert-xml-json
