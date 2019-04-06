@@ -34,7 +34,8 @@ function displayResults(responseObj) {
 	// console.log("calling inside displayResults", responseObj);
 	//get properties inside an object use . notation
 	const works = responseObj.GoodreadsResponse.search.results.work;
-	
+	//when searching for books a second time it clears the 
+	document.getElementById("results").innerHTML = ""
 	works.forEach(function(work){
 		// console.log(work);
 		const author = work.best_book.author.name["#text"];
@@ -42,7 +43,14 @@ function displayResults(responseObj) {
 		const imgUrl = work.best_book.image_url["#text"];
 		console.log("title:", title + ", Author:", author + ", Bookcover", imgUrl);
 		
-		// console.log(author);
+		const myListItem = document.createElement("li");
+		const image = document.createElement("img");
+		image.setAttribute("src", imgUrl);
+		
+		myListItem.innerHTML = title + " by " + author;
+		myListItem.appendChild(image);
+		document.getElementById("results").appendChild(myListItem);
+	
 	});
 }
 // Changes XML to JSON

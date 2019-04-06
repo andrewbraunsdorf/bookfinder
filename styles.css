@@ -1,0 +1,15 @@
+#main-container {
+	text-align: center
+}
+#results {
+	list-style: none;
+	margin-top: 25px;
+}
+li {
+	margin-top: 25px;
+}
+img {
+	display: block;
+	margin: auto;
+	margin-top: 5px;
+}
